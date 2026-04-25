@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网页游戏1</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='32' r='30' fill='none' stroke='%23d6dbe6' stroke-width='2'/%3E%3Cpolygon points='32,12 43,20 39,32 25,32 21,20' fill='%23111827'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Teko:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=9">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hud">
+      <div class="hud__actions">
+        <div class="step-card" aria-live="polite">
+          <span class="step-card__label">当前步数</span>
+          <strong class="step-card__value" id="stepCount">0</strong>
+        </div>
+
+        <button class="action-button action-button--primary" id="startButton" type="button">开始</button>
+        <button class="action-button action-button--ghost" id="clearButton" type="button">清除</button>
+      </div>
+    </header>
+
+    <main class="game-layout">
+      <aside class="panel controls-panel" aria-labelledby="controlsTitle">
+        <div class="panel__header">
+          <p class="panel__eyebrow">控制面板</p>
+          <h2 id="controlsTitle">方向控制</h2>
+        </div>
+
+        <div class="controls-grid" id="controlsGrid" aria-label="方向按钮"></div>
+      </aside>
+
+      <section class="panel field-panel" aria-labelledby="fieldTitle">
+        <div class="panel__header">
+          <div>
+            <p class="panel__eyebrow">训练棋盘</p>
+            <h2 id="fieldTitle">足球棋盘</h2>
+          </div>
+          <p class="field-note">4 x 4 棋盘</p>
+        </div>
+
+        <div class="field-stage">
+          <div class="board" id="board" aria-label="4 x 4 足球棋盘">
+            <svg class="path-overlay" id="pathOverlay" aria-hidden="true">
+              <polyline class="path-line path-line--shadow" id="pathLineShadow"></polyline>
+              <polyline class="path-line" id="pathLine"></polyline>
+            </svg>
+            <div class="goal" aria-hidden="true">
+              <img src="../images/goal-net-cutout.png" alt="">
+            </div>
+            <div class="ball" id="ball" aria-hidden="true">
+              <span class="ball__sprite">
+                <img src="../images/足球.jpg" alt="">
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel log-panel" aria-labelledby="logTitle">
+      <div class="panel__header">
+        <div>
+          <p class="panel__eyebrow">最近记录</p>
+          <h2 id="logTitle">最近 5 步记录</h2>
+        </div>
+        <p class="log-note">保留最近五步</p>
+      </div>
+
+      <div class="move-log" id="moveLog" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <script src="script.js?v=10"></script>
+</body>
+</html>
